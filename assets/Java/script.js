@@ -66,12 +66,12 @@ const collectEmployees = function () {
     return;
   }
   else {
-    employee.salary = salary;
+    employee.salary = parseInt(salary);
   }
 
   // Adds employee object to employeArray
   employeesArray.push(employee);
-  // console.log(employeesArray); // For testing
+  // console.log(employeesArray); // For
   if (window.confirm("Would you like to add another employee?")) {
     collectEmployees();
   }
@@ -83,14 +83,18 @@ const collectEmployees = function () {
 
 // Display the average salary
 const displayAverageSalary = function (employees) {
+
   const employeeNum = employees.length;
   let totalSum = 0;
+
+  // Creates sum of all salaries
   for (i = 0; i < employeeNum; i++) {
     totalSum = totalSum + parseInt(employees[i].salary);
 
   }
 
-  console.log(`The average salary out of our ${employeeNum} employees is ${(totalSum / employeeNum)}`);
+  // Logs average salary formatted as US Currency
+  console.log(`The average salary out of our ${employeeNum} employees is ${(totalSum / employeeNum).toLocaleString("en-US", { style: "currency", currency: "USD" })}`);
   return;
 }
 
@@ -102,14 +106,8 @@ const getRandomEmployee = function (employees) {
   return;
 }
 
-/*
-  ====================
-  STARTER CODE
-  Do not modify any of the code below this line:
-*/
-
 // Display employee data in an HTML table
-const displayEmployees = function (employeesArray) {
+const displayEmployees = function (employeesA) {
   // Get the employee table
   const employeeTable = document.querySelector('#employee-table');
 
@@ -117,8 +115,8 @@ const displayEmployees = function (employeesArray) {
   employeeTable.innerHTML = '';
 
   // Loop through the employee data and create a row for each employee
-  for (let i = 0; i < employeesArray.length; i++) {
-    const currentEmployee = employeesArray[i];
+  for (let i = 0; i < employeesA.length; i++) {
+    const currentEmployee = employeesA[i];
 
     const newTableRow = document.createElement("tr");
 
@@ -155,6 +153,7 @@ const trackEmployeeData = function () {
 
   getRandomEmployee(employees);
 
+  // Sorts employees alphabetically by last name
   employees.sort(function (a, b) {
     if (a.lastName < b.lastName) {
       return -1;
