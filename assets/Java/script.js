@@ -71,7 +71,7 @@ const collectEmployees = function () {
 
   // Adds employee object to employeArray
   employeesArray.push(employee);
-  console.log(employeesArray);
+  // console.log(employeesArray); // For testing
   if (window.confirm("Would you like to add another employee?")) {
     collectEmployees();
   }
